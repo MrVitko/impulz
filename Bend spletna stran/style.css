@@ -1,0 +1,222 @@
+/* ===== Reset in osnovna postavitev ===== */
+* {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+html, body {
+  width: 100%;
+  font-family: 'Poppins', sans-serif; /* modern font */
+  background-color: #0d0d0d;          /* temno ozadje */
+  color: #f0f0f0;
+  overflow-x: hidden;
+  scroll-behavior: smooth;
+  transition: opacity 0.5s ease-in-out, transform 0.5s ease-in-out; /* za fade+slide animacije */
+}
+
+/* ===== Fiksni header / navigacija ===== */
+.hero-header {
+  position: fixed; /* meni ostane na vrhu */
+  top: 0;
+  left: 0;
+  width: 100%;
+  padding: 1rem 3rem;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  background: rgba(15, 15, 15, 0.85); /* prosojno, temno ozadje */
+  backdrop-filter: blur(10px);
+  z-index: 1000;
+  box-shadow: 0 2px 8px rgba(0,0,0,0.3);
+}
+
+/* LOGO */
+.logo {
+  display: flex;
+  align-items: center;
+  gap: 0.7rem;
+}
+
+.logo-img {
+  height: 45px;
+  width: 45px;
+  border-radius: 50%;
+  object-fit: cover;
+  border: 2px solid #ff3366;
+}
+
+.logo-text {
+  font-weight: 700;
+  font-size: 1.5rem;
+  color: #ff3366;
+  letter-spacing: 1px;
+}
+
+/* NAVIGACIJA */
+.main-nav ul {
+  list-style: none;
+  display: flex;
+  gap: 2rem;
+}
+
+.main-nav a {
+  color: #f0f0f0;
+  font-weight: 600;
+  text-transform: uppercase;
+  font-size: 0.95rem;
+  position: relative;
+  transition: color 0.3s;
+}
+
+.main-nav a:hover,
+.main-nav a.active {
+  color: #ff3366;
+}
+
+/* ===== Hero sekcija (celozaslonska) ===== */
+.hero-section {
+  height: 100dvh;
+  width: 100%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  position: relative;
+  background-image: url('bend.jpg'); /* <-- ime in pot slike */
+  background-size: cover;
+  background-position: center;
+  background-repeat: no-repeat;
+  overflow: hidden;
+}
+
+.hero-section::before {
+  content: "";
+  position: absolute;
+  inset: 0;
+  background: rgba(0,0,0,0.5);
+} /* temnenje ozadja za boljši kontrast */
+
+
+.hero-overlay {
+  position: relative;
+  text-align: center;
+  z-index: 2;
+}
+
+.hero-overlay h1 {
+  font-size: 3rem;
+  color: #ff3366;
+  margin-bottom: 1rem;
+  letter-spacing: 2px;
+}
+
+.hero-overlay p {
+  font-size: 1.2rem;
+  color: #f0f0f0;
+  text-shadow: 0 2px 6px rgba(0,0,0,0.7);
+}
+
+/* ===== Glavni del strani ===== */
+.content-section {
+  max-width: 900px;
+  margin: 140px auto 60px auto; /* zaradi fiksnega headerja */
+  padding: 0 2rem;
+  color: #f0f0f0;
+  line-height: 1.6;
+}
+
+/* ===== Eventi / koledar ===== */
+/* ===== Eventi / koledar ===== */
+.events-section h1 {
+  text-align: center;
+  color: #ff3366;
+  margin-bottom: 2rem;
+  font-size: 2.5rem;
+}
+
+.event-card {
+  background: #1a1a1a;
+  padding: 1rem 1.5rem;
+  margin-bottom: 1rem;
+  border-left: 5px solid #ff3366;
+  border-radius: 10px;
+  box-shadow: 0 6px 12px rgba(0,0,0,0.4);
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  transition: transform 0.2s, background 0.3s;
+}
+
+.event-card:hover {
+  transform: translateY(-3px);
+  background: #2a2a2a;
+}
+
+.event-date {
+  font-weight: 700;
+  color: #ff3366;
+  min-width: 100px;
+}
+
+.event-name {
+  flex: 1;
+  text-align: left;
+}
+
+.event-location {
+  font-size: 0.9rem;
+  color: #aaa;
+}
+
+/* ===== Footer ===== */
+footer {
+  text-align: center;
+  padding: 1rem 0;
+  background: #0d0d0d;
+  color: #aaa;
+  border-top: 1px solid #222;
+}
+
+/* ===== Slike benda ===== */
+.band-photo {
+  display: block;
+  max-width: 100%;
+  height: auto;
+  border-radius: 12px;
+  margin: 2rem auto;
+  box-shadow: 0 6px 12px rgba(255, 51, 102,0.3);
+}
+
+/* ===== Video okvir ===== */
+.video-wrapper {
+  display: flex;
+  justify-content: center;
+  margin: 2rem 0;
+}
+
+iframe {
+  max-width: 100%;
+  border-radius: 12px;
+  box-shadow: 0 6px 15px rgba(255,51,102,0.4);
+}
+
+/* ===== Fade + slide animacija med stranmi ===== */
+/*body {
+  transform: translateX(50px);
+  opacity: 0;
+}
+
+body.page-loaded {
+  opacity: 1;
+  transform: translateX(0);
+}
+
+body.page-exit {
+  opacity: 0;
+  transform: translateX(-50px);
+}
+
+/* ===== Prva stran brez scrolla ===== */
+/*body.home {
+  overflow: hidden; /* nobenega scrolla na hero strani */
+
